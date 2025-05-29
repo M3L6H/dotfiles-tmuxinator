@@ -1,0 +1,17 @@
+# /home/m3l6h/.config/tmuxinator/neovim.yml
+
+name: neovim
+root: /home/m3l6h/files/dev/m3l6h/neovim/
+
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-neovim'
+  - export PATH="/home/m3l6h/files/dev/m3l6h/neovim/result/bin:${PATH}"
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - tmux setenv PATH $PATH
+  - clear
+
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-neovim
+  - term:
+      -

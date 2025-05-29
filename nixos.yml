@@ -1,0 +1,21 @@
+# /home/m3l6h/.config/tmuxinator/nixos.yml
+
+name: nixos
+root: /etc/nixos
+
+on_project_start:
+  - cp /persist/home/$USER/.zsh_history-nixos /home/$USER/.zsh_history
+
+on_project_exit:
+  - mv /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-nixos
+
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-nixos'
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - clear
+
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-nixos
+  - term:
+      -

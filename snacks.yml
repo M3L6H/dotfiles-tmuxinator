@@ -1,0 +1,15 @@
+# /home/m3l6h/.config/tmuxinator/snacks.yml
+
+name: snacks
+root: /home/m3l6h/files/dev/folke/snacks.nvim/
+
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-snacks'
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - clear
+
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-snacks
+  - term:
+      -
