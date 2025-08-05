@@ -4,13 +4,15 @@ name: nixos
 root: /etc/nixos
 
 on_project_start:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
   - cp /persist/home/$USER/.zsh_history-nixos /home/$USER/.zsh_history
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada
   - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada-nixos /home/m3l6h/.local/state/nvim/shada/main.shada
 
 on_project_exit:
-  - mv /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-nixos
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-nixos
   - cp /persist/home/$USER/.zsh_history /home/$USER/.zsh_history
-  - mv /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada-nixos
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada-nixos
   - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada /home/m3l6h/.local/state/nvim/shada/main.shada
 
 pre_window:

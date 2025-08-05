@@ -1,10 +1,12 @@
 # /home/m3l6h/.config/tmuxinator/tmuxinator.yml
 
 name: tmuxinator
-root: /home/m3l6h/files/.config/tmuxinator/
+root: /home/m3l6h/.config/tmuxinator/
 
 on_project_start:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
   - cp /persist/home/$USER/.zsh_history-tmuxinator /home/$USER/.zsh_history
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada
   - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada-tmuxinator /home/m3l6h/.local/state/nvim/shada/main.shada
 
 on_project_exit:
@@ -15,11 +17,11 @@ on_project_exit:
 
 pre_window:
   - export NEOVIM_SOCKET='/tmp/nvimsocket-tmuxinator'
-  - tmux setenv NEOVIM_SOCKET $tmuxinator_SOCKET
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
   - clear
 
 windows:
-  # Enable controlling tmuxinator with neovim-remote
-  - tmuxinator: nvim --listen /tmp/nvimsocket-tmuxinator
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-tmuxinator
   - term:
       -
