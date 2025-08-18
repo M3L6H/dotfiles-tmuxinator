@@ -1,0 +1,28 @@
+# /home/m3l6h/.config/tmuxinator/bb.yml
+
+name: bb
+root: /home/m3l6h/files/dev/m3l6h/bb
+
+on_project_start:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
+  - cp /persist/home/$USER/.zsh_history-bb /home/$USER/.zsh_history
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada
+  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada-bb /home/m3l6h/.local/state/nvim/shada/main.shada
+
+on_project_exit:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-bb
+  - cp /persist/home/$USER/.zsh_history /home/$USER/.zsh_history
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada-bb
+  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada /home/m3l6h/.local/state/nvim/shada/main.shada
+
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-bb'
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - clear
+
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-bb
+  - term:
+      -
+
