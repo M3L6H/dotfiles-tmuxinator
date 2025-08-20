@@ -23,6 +23,7 @@ pre_window:
 windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-bb
+  - develop: nix develop
   - term:
       -
 
