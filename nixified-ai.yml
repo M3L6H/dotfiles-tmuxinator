@@ -1,0 +1,22 @@
+# /home/m3l6h/.config/tmuxinator/nixified-ai.yml
+name: nixified-ai
+root: /home/m3l6h/files/dev/nixified-ai/flake
+on_project_start:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
+  - cp /persist/home/$USER/.zsh_history-nixified-ai /home/$USER/.zsh_history
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada
+  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada-nixified-ai /home/m3l6h/.local/state/nvim/shada/main.shada
+on_project_exit:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-nixified-ai
+  - cp /persist/home/$USER/.zsh_history /home/$USER/.zsh_history
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada-nixified-ai
+  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada /home/m3l6h/.local/state/nvim/shada/main.shada
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-nixified-ai'
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - clear
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-nixified-ai
+  - term:
+      -
