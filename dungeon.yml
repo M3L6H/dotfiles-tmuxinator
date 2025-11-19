@@ -19,5 +19,5 @@ windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-dungeon
   - term:
-      - xdg-open http://localhost:3000
+      - nohup xdg-open http://localhost:3000 > /dev/null 2>&1 &
   - site: cd src && python3 -m http.server 3000
