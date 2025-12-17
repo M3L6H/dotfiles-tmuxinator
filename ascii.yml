@@ -1,0 +1,23 @@
+# /home/m3l6h/.config/tmuxinator/ascii.yml
+name: ascii
+root: /home/m3l6h/files/dev/m3l6h/ascii-converter/
+on_project_start:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
+  - cp /persist/home/$USER/.zsh_history-ascii /home/$USER/.zsh_history
+  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada
+  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada-ascii /home/m3l6h/.local/state/nvim/shada/main.shada
+on_project_exit:
+  - mv /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-ascii
+  - cp /persist/home/$USER/.zsh_history /home/$USER/.zsh_history
+  - mv /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada-ascii
+  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada /home/m3l6h/.local/state/nvim/shada/main.shada
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-ascii'
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - clear
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-ascii
+  - term:
+      - nohup xdg-open http://localhost:3000 > /dev/null 2>&1 &
+  - site: cd src && python3 -m http.server 3000
