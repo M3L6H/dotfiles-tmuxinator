@@ -1,27 +1,21 @@
-# /home/m3l6h/.config/tmuxinator/neovim.yml
-
 name: neovim
-root: /home/m3l6h/files/dev/m3l6h/neovim/
-
+root: ~/files/dev/m3l6h/neovim/
 on_project_start:
   - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
   - cp /persist/home/$USER/.zsh_history-neovim /home/$USER/.zsh_history
-  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada
-  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada-neovim /home/m3l6h/.local/state/nvim/shada/main.shada
-
+  - cp /home/$USER/.local/state/nvim/shada/main.shada /persist/home/$USER/.local/state/nvim/shada/main.shada
+  - cp /persist/home/$USER/.local/state/nvim/shada/main.shada-neovim /home/$USER/.local/state/nvim/shada/main.shada
 on_project_exit:
   - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-neovim
   - cp /persist/home/$USER/.zsh_history /home/$USER/.zsh_history
-  - cp /home/m3l6h/.local/state/nvim/shada/main.shada /persist/home/m3l6h/.local/state/nvim/shada/main.shada-neovim
-  - cp /persist/home/m3l6h/.local/state/nvim/shada/main.shada /home/m3l6h/.local/state/nvim/shada/main.shada
-
+  - cp /home/$USER/.local/state/nvim/shada/main.shada /persist/home/$USER/.local/state/nvim/shada/main.shada-neovim
+  - cp /persist/home/$USER/.local/state/nvim/shada/main.shada /home/$USER/.local/state/nvim/shada/main.shada
 pre_window:
   - export NEOVIM_SOCKET='/tmp/nvimsocket-neovim'
-  - export PATH="/home/m3l6h/files/dev/m3l6h/neovim/result/bin:${PATH}"
+  - export PATH="/home/$USER/files/dev/m3l6h/neovim/result/bin:${PATH}"
   - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
   - tmux setenv PATH $PATH
   - clear
-
 windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-neovim
