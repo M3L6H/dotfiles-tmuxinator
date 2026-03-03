@@ -19,5 +19,8 @@ windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-ascii
   - term:
+      - sleep 1
       - nohup xdg-open http://localhost:3000 > /dev/null 2>&1 &
+      - sleep 0.25
+      - git fetch && clear
   - site: cd src && python3 -m http.server 3000

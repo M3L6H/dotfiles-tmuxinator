@@ -19,4 +19,4 @@ windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-nixified-ai
   - term:
-      -
+      - git fetch && clear

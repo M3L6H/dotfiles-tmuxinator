@@ -1,0 +1,22 @@
+# /home/m3l6h/.config/tmuxinator/scum.yml
+name: scum
+root: ~/files/dev/m3l6h/scum
+on_project_start:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
+  - cp /persist/home/$USER/.zsh_history-scum /home/$USER/.zsh_history
+  - cp /home/$USER/.local/state/nvim/shada/main.shada /persist/home/$USER/.local/state/nvim/shada/main.shada
+  - cp /persist/home/$USER/.local/state/nvim/shada/main.shada-scum /home/$USER/.local/state/nvim/shada/main.shada
+on_project_exit:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-scum
+  - cp /persist/home/$USER/.zsh_history /home/$USER/.zsh_history
+  - cp /home/$USER/.local/state/nvim/shada/main.shada /persist/home/$USER/.local/state/nvim/shada/main.shada-scum
+  - cp /persist/home/$USER/.local/state/nvim/shada/main.shada /home/$USER/.local/state/nvim/shada/main.shada
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-scum'
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - clear
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-scum
+  - term:
+      - git fetch && clear
