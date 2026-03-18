@@ -23,4 +23,7 @@ windows:
       - nohup xdg-open http://localhost:3000 > /dev/null 2>&1 &
       - sleep 0.25
       - clear
-  - site: nix develop
+  - site:
+      - git fetch
+      - nix develop
+      - clear

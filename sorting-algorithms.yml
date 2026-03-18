@@ -20,3 +20,4 @@ windows:
   - neovim: nvim --listen /tmp/nvimsocket-sorting-algorithms
   - term:
       - git fetch
+      - clear

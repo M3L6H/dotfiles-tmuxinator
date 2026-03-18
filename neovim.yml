@@ -20,4 +20,5 @@ windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-neovim
   - term:
-      -
+      - git fetch
+      - clear

@@ -20,3 +20,4 @@ windows:
   - neovim: nvim --listen /tmp/nvimsocket-ai
   - term:
       - git fetch
+      - clear
