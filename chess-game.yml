@@ -18,6 +18,5 @@ pre_window:
 windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-chess-game
-  - develop: nix develop
   - term:
-      - git fetch && clear
+      - launch-godot
