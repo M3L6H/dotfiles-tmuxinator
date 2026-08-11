@@ -20,5 +20,4 @@ windows:
   - neovim: nvim --listen /tmp/nvimsocket-homelab
   - term:
       - git fetch
-      - nix develop
       - clear
