@@ -1,0 +1,23 @@
+# /home/m3l6h/.config/tmuxinator/loose-ends.yml
+name: loose-ends
+root: /home/m3l6h/files/dev/m3l6h/loose-ends
+on_project_start:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history
+  - cp /persist/home/$USER/.zsh_history-loose-ends /home/$USER/.zsh_history
+  - cp /home/$USER/.local/state/nvim/shada/main.shada /persist/home/$USER/.local/state/nvim/shada/main.shada
+  - cp /persist/home/$USER/.local/state/nvim/shada/main.shada-loose-ends /home/$USER/.local/state/nvim/shada/main.shada
+on_project_exit:
+  - cp /home/$USER/.zsh_history /persist/home/$USER/.zsh_history-loose-ends
+  - cp /persist/home/$USER/.zsh_history /home/$USER/.zsh_history
+  - cp /home/$USER/.local/state/nvim/shada/main.shada /persist/home/$USER/.local/state/nvim/shada/main.shada-loose-ends
+  - cp /persist/home/$USER/.local/state/nvim/shada/main.shada /home/$USER/.local/state/nvim/shada/main.shada
+pre_window:
+  - export NEOVIM_SOCKET='/tmp/nvimsocket-loose-ends'
+  - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
+  - clear
+windows:
+  # Enable controlling neovim with neovim-remote
+  - neovim: nvim --listen /tmp/nvimsocket-loose-ends
+  - term:
+      - git fetch
+      - clear

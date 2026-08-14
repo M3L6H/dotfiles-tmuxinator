@@ -18,5 +18,7 @@ windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-tmuxinator
   - term:
-      - git fetch
-      - clear
+      layout: even-horizontal
+      panes:
+        - git fetch && clear
+        - cd "/home/$USER/files/dev"
