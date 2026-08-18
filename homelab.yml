@@ -15,9 +15,13 @@ pre_window:
   - export NEOVIM_SOCKET='/tmp/nvimsocket-homelab'
   - tmux setenv NEOVIM_SOCKET $NEOVIM_SOCKET
   - clear
+startup_window: term
+startup_pane: 2
 windows:
   # Enable controlling neovim with neovim-remote
   - neovim: nvim --listen /tmp/nvimsocket-homelab
   - term:
-      - git fetch
-      - clear
+      layout: even-horizontal
+      panes:
+        - git fetch && clear
+        - ssh shinobu
